@@ -31,6 +31,7 @@ bool LinkedList<T>::add(const T item) {
     return true;
 }
 
+
 /**
  * Add element at the specific index in the list.
  * If index is greather then total size of the list, the element
@@ -68,6 +69,20 @@ bool LinkedList<T>::add(const unsigned int index, const T item) {
     return true;
 }
 
+
+template <class T>
+void LinkedList<T>::removeFirst() {
+    if(this->head == NULL) {
+        return;
+    }
+
+    LinkedList::node* temp = new LinkedList::node;
+    temp = this->head;
+    this->head = this->head->next;
+    delete temp;
+}
+
+
 // Print whole linked list items separated by comma
 template <class T>
 void LinkedList<T>::print() {
@@ -83,6 +98,9 @@ void LinkedList<T>::print() {
     delete temp;
 } 
 
+
+
+
 /*IpV4::IpV4(const string ip) {
     if(this->isValid(ip)) {
         this->ip = ip;
@@ -90,10 +108,6 @@ void LinkedList<T>::print() {
     else {
         throw string("Ip is invalid. Please insert correct ip and try again!");
     }
-}
-
-string IpV4::getIp() {
-    return this->ip;
 }
 
 IpV4::IpV4(const IpV4& orig) {

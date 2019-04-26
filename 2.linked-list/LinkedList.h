@@ -16,12 +16,11 @@ class LinkedList {
         LinkedList();
         bool add(const T item);
         bool add(const unsigned int index, const T item);
+        void removeFirst();
         void print();
 };
 
 
-// boolean add(E e) --- It is used to append the specified element to the end of a list.
-// void add(int index, E element) --- It is used to insert the specified element at the specified position index in a list.
 // boolean addAll(Collection<? extends E> c) --- It is used to append all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's iterator.
 // boolean addAll(Collection<? extends E> c) --- It is used to append all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's iterator.
 // boolean addAll(int index, Collection<? extends E> c) --- It is used to append all the elements in the specified collection, starting at the specified position of the list.
@@ -49,10 +48,8 @@ class LinkedList {
 // E pollLast() --- It retrieves and removes the last element of a list, or returns null if a list is empty.
 // E pop() --- It pops an element from the stack represented by a list.
 // void push(E e) --- It pushes an element onto the stack represented by a list.
-// E remove() --- It is used to retrieve and removes the first element of a list.
 // E remove(int index) --- It is used to remove the element at the specified position in a list.
 // boolean remove(Object o) --- It is used to remove the first occurrence of the specified element in a list.
-// E removeFirst() --- It removes and returns the first element from a list.
 // boolean removeFirstOccurrence(Object o) --- It is used to remove the first occurrence of the specified element in a list (when traversing the list from head to tail).
 // E removeLast() --- It removes and returns the last element from a list.
 // boolean removeLastOccurrence(Object o) --- It removes the last occurrence of the specified element in a list (when traversing the list from head to tail).
