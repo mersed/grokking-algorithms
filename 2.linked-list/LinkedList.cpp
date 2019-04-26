@@ -31,25 +31,41 @@ bool LinkedList<T>::add(const T item) {
     return true;
 }
 
-// Add element at the specific index in the list
+/**
+ * Add element at the specific index in the list.
+ * If index is greather then total size of the list, the element
+ * is added at the end of the list.
+ */
 template <class T>
-bool LinkedList<T>::add(const int index, const T item) {
-    /*LinkedList::node* temp = new LinkedList::node;
-    temp->data = item;
-    temp->next = NULL;
-
+bool LinkedList<T>::add(const unsigned int index, const T item) {
+    // If its first element in the linked list
     if(this->head == NULL) {
-        this->head = temp;
-        this->tail = temp;
-        temp = NULL;
+        this->add(item);
+        return true;
+    }
+
+    int counter = 0;
+    LinkedList::node* newNode = new LinkedList::node;
+    LinkedList::node* currentNode = new LinkedList::node;
+    LinkedList::node* prevNode = new LinkedList::node;
+    currentNode = this->head;
+
+    while(currentNode != NULL && counter < index) {
+        prevNode = currentNode;
+        currentNode = currentNode->next;
+        counter++;
+    }
+
+    if(currentNode == NULL) {
+        this->add(item);
     }
     else {
-        this->tail->next = temp;
-        this->tail = temp;
+        newNode->data = item;
+        newNode->next = currentNode;
+        prevNode->next = newNode;
     }
 
     return true;
-    */
 }
 
 // Print whole linked list items separated by comma

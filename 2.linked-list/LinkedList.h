@@ -15,7 +15,7 @@ class LinkedList {
     public:
         LinkedList();
         bool add(const T item);
-        bool add(const int index, const T item);
+        bool add(const unsigned int index, const T item);
         void print();
 };
 
