@@ -7,9 +7,10 @@ using namespace std;
 int main(int argc, char** argv) {
     LinkedList<char> object;
 
-    cout << "removeFirst(), removeLast() and clear() on empty list" << endl;
+    cout << "removeFirst(), removeLast(), set() and clear() on empty list" << endl;
     object.removeFirst();
     object.removeLast();
+    object.set(0, 'E');
     object.clear();
     cout << "Size: " << object.size() << endl;
     object.print();
@@ -78,6 +79,17 @@ int main(int argc, char** argv) {
     cout << "2 x removeLast()" << endl;
     object.removeLast();
     object.removeLast();
+    cout << "Size: " << object.size() << endl;
+    object.print();
+    cout << "-----------------------------------------------------" << endl;
+
+    cout << "set(0, 'A'), set(1, 'B'), set(2, 'C'), set(3, 'D'), set(4, 'E'), set(5, 'F')" << endl;
+    object.set(0, 'A');
+    object.set(1, 'B');
+    object.set(2, 'C');
+    object.set(3, 'D');
+    object.set(4, 'E');
+    object.set(5, 'F');
     cout << "Size: " << object.size() << endl;
     object.print();
     cout << "-----------------------------------------------------" << endl;

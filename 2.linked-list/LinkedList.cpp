@@ -169,6 +169,30 @@ unsigned int LinkedList<T>::size() {
 }
 
 
+// Set value of element at specific index (to different value)
+template <class T>
+void LinkedList<T>::set(const unsigned int index, const T val) {
+    bool indexFound = false;
+    unsigned int counter = 0;
+    LinkedList::node* temp = new LinkedList::node;
+    temp = this->head;
+
+    while(temp != NULL) {
+        if(counter == index) {
+            indexFound = true;
+            break;
+        }
+
+        counter++;
+        temp = temp->next;
+    }
+
+    if(indexFound) {
+        temp->data = val;
+    }
+}
+
+
 // Print whole linked list items separated by comma
 template <class T>
 void LinkedList<T>::print() {
