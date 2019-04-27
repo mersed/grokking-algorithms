@@ -137,6 +137,22 @@ void LinkedList<T>::remove(const unsigned int index) {
 }
 
 
+// Removes all elements from the list
+template <class T>
+void LinkedList<T>::clear() {
+    LinkedList::node* temp = new LinkedList::node;
+    temp = this->head;
+
+    while(temp != NULL) {
+        delete temp;
+        temp = temp->next;
+    }
+
+    this->head = NULL;
+    this->tail = NULL;
+}
+
+
 // Print whole linked list items separated by comma
 template <class T>
 void LinkedList<T>::print() {
@@ -156,10 +172,7 @@ void LinkedList<T>::print() {
     delete temp;
 } 
 
-
-
-
-/*
-IpV4::~IpV4() {
+template <class T>
+LinkedList<T>::~LinkedList() {
+    this->clear();
 }
-*/

@@ -25,6 +25,8 @@ class LinkedList {
         void removeFirst();
         void removeLast();
         void remove(const unsigned int index);
+        void clear();
+        ~LinkedList();
         // bool removeByVal(T val) // Remove all elements from linked list with specific value. Returns true if at least one element is removed, false othervise
         // bool removeByValFirstOccurance(T val) // Remove first element with specific value from the list. Returns true if element was found and removed, false othervise.
         // bool removeByValLastOccurance(T val)
@@ -37,7 +39,6 @@ class LinkedList {
         // T[] toArray();
         // int size(); //--- It replaces the element at the specified position in a list with the specified element.
         // int indexOf(const T val) --- It is used to return the index in a list of the first occurrence of the specified element, or -1 if the list does not contain any element.
-        // void clear();
         // bool contains(const T val) // It is used to return true if a list contains a specified element.
         void print();
 };
@@ -49,20 +50,6 @@ class LinkedList {
 // <T> T[] toArray(T[] a) --- It returns an array containing all the elements in the proper sequence (from first to the last element); the runtime type of the returned array is that of the specified array.
 
 
-
-
-
-/*#include <iostream>
-
-
-class IpV4 {
-private:
-    
-public:    
-    virtual ~IpV4();
-
-};
-*/
 
 // Just an other way of dealing with templates and separated implementation with classes
 #include "LinkedList.cpp"
