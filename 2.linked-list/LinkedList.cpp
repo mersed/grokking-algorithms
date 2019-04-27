@@ -133,7 +133,49 @@ void LinkedList<T>::removeLast() {
 // Remove element at the specific index
 template <class T>
 void LinkedList<T>::remove(const unsigned int index) {
+    // No elements, return
+    if(this->head == NULL) {
+        return;
+    }
 
+    // If we want to remove first element
+    if(index == 0) {
+        this->removeFirst();
+        return;
+    }
+
+    // Deal with rest of the cases
+    bool indexFound = false;
+    unsigned int counter = 0;
+
+    LinkedList::node* current = new LinkedList::node;
+    LinkedList::node* previous = new LinkedList::node;
+    current = this->head;
+    previous = NULL;
+
+    while(current != NULL) {
+        if(counter == index) {
+            indexFound = true;
+            break;
+        }
+
+        previous = current;
+        current = current->next;
+        counter++;
+    }
+
+    if(indexFound) {
+        // Removing last element
+        if(current->next == NULL) {
+            previous->next = NULL;
+            this->tail = previous;
+            delete current;
+        }
+        else {
+            previous->next = current->next;
+            delete current;
+        }
+    }
 }
 
 

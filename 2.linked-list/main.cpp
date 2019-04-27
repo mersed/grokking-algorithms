@@ -7,10 +7,12 @@ using namespace std;
 int main(int argc, char** argv) {
     LinkedList<char> object;
 
-    cout << "removeFirst(), removeLast(), set() and clear() on empty list" << endl;
+    cout << "removeFirst(),removeLast(),set(),remove(0),remove(15) and clear() on empty list" << endl;
     object.removeFirst();
     object.removeLast();
     object.set(0, 'E');
+    object.remove(0);
+    object.remove(15);
     object.clear();
     cout << "Size: " << object.size() << endl;
     object.print();
@@ -37,6 +39,33 @@ int main(int argc, char** argv) {
 
     cout << "removeLast() on list with one element" << endl;
     object.removeLast();
+    cout << "Size: " << object.size() << endl;
+    object.print();
+    cout << "-----------------------------------------------------" << endl;
+
+    cout << "add('A') on empty list" << endl;
+    object.add('A');
+    cout << "Size: " << object.size() << endl;
+    object.print();
+    cout << "-----------------------------------------------------" << endl;
+
+    cout << "remove(0) on list with one element" << endl;
+    object.remove(0);
+    cout << "Size: " << object.size() << endl;
+    object.print();
+    cout << "-----------------------------------------------------" << endl;
+
+    cout << "add('A'), add('B') on empty list" << endl;
+    object.add('A');
+    object.add('B');
+    cout << "Size: " << object.size() << endl;
+    object.print();
+    cout << "-----------------------------------------------------" << endl;
+
+    cout << "remove(1), remove(1), remove(0) on list with two elements" << endl;
+    object.remove(1);
+    object.remove(1);
+    object.remove(0);
     cout << "Size: " << object.size() << endl;
     object.print();
     cout << "-----------------------------------------------------" << endl;
@@ -90,6 +119,21 @@ int main(int argc, char** argv) {
     object.set(3, 'D');
     object.set(4, 'E');
     object.set(5, 'F');
+    cout << "Size: " << object.size() << endl;
+    object.print();
+    cout << "-----------------------------------------------------" << endl;
+
+    cout << "add('E'), add('F')" << endl;
+    object.add('E');
+    object.add('F');
+    cout << "Size: " << object.size() << endl;
+    object.print();
+    cout << "-----------------------------------------------------" << endl;
+
+    cout << "remove(5), remove(4), remove(0) on list with two elements" << endl;
+    object.remove(5);
+    object.remove(4);
+    object.remove(0);
     cout << "Size: " << object.size() << endl;
     object.print();
     cout << "-----------------------------------------------------" << endl;
