@@ -11,27 +11,32 @@ int main(int argc, char** argv) {
     object.removeFirst();
     object.removeLast();
     object.clear();
+    cout << "Size: " << object.size() << endl;
     object.print();
     cout << "-----------------------------------------------------" << endl;
 
 
     cout << "add('A') on empty list" << endl;
     object.add('A');
+    cout << "Size: " << object.size() << endl;
     object.print();
     cout << "-----------------------------------------------------" << endl;
 
     cout << "removeFirst() on list with one element" << endl;
     object.removeFirst();
+    cout << "Size: " << object.size() << endl;
     object.print();
     cout << "-----------------------------------------------------" << endl;
 
     cout << "addFirst('A') on empty list" << endl;
     object.addFirst('A');
+    cout << "Size: " << object.size() << endl;
     object.print();
     cout << "-----------------------------------------------------" << endl;
 
     cout << "removeLast() on list with one element" << endl;
     object.removeLast();
+    cout << "Size: " << object.size() << endl;
     object.print();
     cout << "-----------------------------------------------------" << endl;
 
@@ -41,38 +46,45 @@ int main(int argc, char** argv) {
     object.add('C');
     object.add('D');
     object.addFirst('0');
+    cout << "Size: " << object.size() << endl;
     object.print();
     cout << "-----------------------------------------------------" << endl;
 
     cout << "add('E')" << endl;
     object.add('E');
+    cout << "Size: " << object.size() << endl;
     object.print();
     cout << "-----------------------------------------------------" << endl;
 
     cout << "add(2, 'Z')" << endl;
     object.add(2, 'Z');
+    cout << "Size: " << object.size() << endl;
     object.print();
     cout << "-----------------------------------------------------" << endl;
 
     cout << "add(6, 'O')" << endl;
     object.add(6, 'O');
+    cout << "Size: " << object.size() << endl;
     object.print();
     cout << "-----------------------------------------------------" << endl;
 
     cout << "2 x removeFirst()" << endl;
     object.removeFirst();
     object.removeFirst();
+    cout << "Size: " << object.size() << endl;
     object.print();
     cout << "-----------------------------------------------------" << endl;
 
     cout << "2 x removeLast()" << endl;
     object.removeLast();
     object.removeLast();
+    cout << "Size: " << object.size() << endl;
     object.print();
     cout << "-----------------------------------------------------" << endl;
 
     cout << "clear()" << endl;
     object.clear();
+    cout << "Size: " << object.size() << endl;
     object.print();
     cout << "-----------------------------------------------------" << endl;
 }

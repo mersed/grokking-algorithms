@@ -26,6 +26,7 @@ class LinkedList {
         void removeLast();
         void remove(const unsigned int index);
         void clear();
+        unsigned int size();
         ~LinkedList();
         // bool removeByVal(T val) // Remove all elements from linked list with specific value. Returns true if at least one element is removed, false othervise
         // bool removeByValFirstOccurance(T val) // Remove first element with specific value from the list. Returns true if element was found and removed, false othervise.
@@ -37,7 +38,7 @@ class LinkedList {
         // T pollLast();  //It retrieves and removes the last element of a list, or returns null if a list is empty.
         // T set(const unsigned int index, const T item);
         // T[] toArray();
-        // int size(); //--- It replaces the element at the specified position in a list with the specified element.
+        
         // int indexOf(const T val) --- It is used to return the index in a list of the first occurrence of the specified element, or -1 if the list does not contain any element.
         // bool contains(const T val) // It is used to return true if a list contains a specified element.
         void print();

@@ -153,6 +153,22 @@ void LinkedList<T>::clear() {
 }
 
 
+// Return size of the linked list
+template <class T>
+unsigned int LinkedList<T>::size() {
+    int size = 0;
+    LinkedList::node* temp = new LinkedList::node;
+    temp = this->head;
+
+    while(temp != NULL) {
+        size++;
+        temp = temp->next;
+    }
+
+    return size;
+}
+
+
 // Print whole linked list items separated by comma
 template <class T>
 void LinkedList<T>::print() {
