@@ -138,6 +138,14 @@ int main(int argc, char** argv) {
     object.print();
     cout << "-----------------------------------------------------" << endl;
 
+    cout << "getFirst(), and writing its value" << endl;
+    LinkedList<char>::node* head = object.getFirst();
+    cout << "Value of head: " << head->data << endl;
+    cout << "Size: " << object.size() << endl;
+    object.print();
+    cout << "-----------------------------------------------------" << endl;
+
+
     cout << "clear()" << endl;
     object.clear();
     cout << "Size: " << object.size() << endl;

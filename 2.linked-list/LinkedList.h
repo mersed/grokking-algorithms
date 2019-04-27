@@ -8,20 +8,17 @@ using namespace std;
 
 template <class T>
 class LinkedList {
-    private:
+    public:
         struct node {
             T data;
             node* next;
         };
 
-        node* head;
-        node* tail;
-
-    public:
         LinkedList();
         bool add(const T item);
         bool add(const unsigned int index, const T item);
         bool addFirst(const T item);
+        LinkedList<T>::node* getFirst();
         void removeFirst();
         void removeLast();
         void remove(const unsigned int index);
@@ -32,7 +29,6 @@ class LinkedList {
         // bool removeByVal(T val) // Remove all elements from linked list with specific value. Returns true if at least one element is removed, false othervise
         // bool removeByValFirstOccurance(T val) // Remove first element with specific value from the list. Returns true if element was found and removed, false othervise.
         // bool removeByValLastOccurance(T val)
-        // T getFirst();
         // T getLast();
         // T get(const unsigned int index);
         // T pollFirst(); //It retrieves and removes the first element of a list.
@@ -41,6 +37,10 @@ class LinkedList {
         // int indexOf(const T val) --- It is used to return the index in a list of the first occurrence of the specified element, or -1 if the list does not contain any element.
         // bool contains(const T val) // It is used to return true if a list contains a specified element.
         void print();
+
+    private:
+        node* head;
+        node* tail;
 };
 
 

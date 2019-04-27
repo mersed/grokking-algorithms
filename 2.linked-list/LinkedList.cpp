@@ -49,6 +49,13 @@ bool LinkedList<T>::addFirst(const T item) {
 }
 
 
+// Returning pointer to the first element (head)
+template <class T>
+typename LinkedList<T>::node* LinkedList<T>::getFirst() {
+    return this->head;
+}
+
+
 /**
  * Add element at the specific index in the list.
  * If index is greather then total size of the list, the element
