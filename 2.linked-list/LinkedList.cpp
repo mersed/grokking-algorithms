@@ -1,8 +1,4 @@
 #include "LinkedList.h"
-#include <iostream>
-#include <cstddef>
-
-using namespace std;
 
 template <class T>
 LinkedList<T>::LinkedList() {
@@ -26,6 +22,27 @@ bool LinkedList<T>::add(const T item) {
     else {
         this->tail->next = temp;
         this->tail = temp;
+    }
+
+    return true;
+}
+
+
+// Add element at the beggining of the list
+template <class T>
+bool LinkedList<T>::addFirst(const T item) {
+    LinkedList::node* temp = new LinkedList::node;
+    temp->data = item;
+    temp->next = NULL;
+
+    if(this->head == NULL) {
+        this->head = temp;
+        this->tail = temp;
+        temp = NULL;
+    }
+    else {
+        temp->next = this->head;
+        this->head = temp;
     }
 
     return true;
@@ -70,6 +87,7 @@ bool LinkedList<T>::add(const unsigned int index, const T item) {
 }
 
 
+// Remove first element in the list
 template <class T>
 void LinkedList<T>::removeFirst() {
     if(this->head == NULL) {
@@ -83,9 +101,49 @@ void LinkedList<T>::removeFirst() {
 }
 
 
+// Remove last element in the list
+template <class T>
+void LinkedList<T>::removeLast() {
+    if(this->tail == NULL) {
+        return;
+    }
+
+    LinkedList::node* current = new LinkedList::node;
+    LinkedList::node* previous = new LinkedList::node;
+    current = this->head;
+    previous = NULL;
+
+    while(current->next != NULL) {
+        previous = current;
+        current = current->next;
+    }
+
+    delete current;
+    if(previous != NULL) {
+        this->tail = previous;
+        this->tail->next = NULL;
+    }
+    else {
+        this->head = NULL;
+        this->tail = NULL;
+    }
+}
+
+
+// Remove element at the specific index
+template <class T>
+void LinkedList<T>::remove(const unsigned int index) {
+
+}
+
+
 // Print whole linked list items separated by comma
 template <class T>
 void LinkedList<T>::print() {
+    if(this->head == NULL) {
+        cout << "--- Empty list ---";
+    }
+
     LinkedList::node* temp = new LinkedList::node;
     temp = this->head;
 
@@ -101,18 +159,7 @@ void LinkedList<T>::print() {
 
 
 
-/*IpV4::IpV4(const string ip) {
-    if(this->isValid(ip)) {
-        this->ip = ip;
-    }
-    else {
-        throw string("Ip is invalid. Please insert correct ip and try again!");
-    }
-}
-
-IpV4::IpV4(const IpV4& orig) {
-}
-
+/*
 IpV4::~IpV4() {
 }
 */
