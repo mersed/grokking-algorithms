@@ -1,12 +1,13 @@
 /**
- * Breadth first search on graph ...
- * Simple map is used as represantion of graph
- * Simple list is used for queue
- * Simple vector is used for already searched check.
+ * Djikstra's algorithm.
+ * Consider that we have weighted graph given. Each segment (between)
+ * two nodes have travel time in minutes. Using the Djikstra's algorithm,
+ * we are able to find the shortest possible time from start to some
+ * position in the graph.
  *
- * This is prototype showcase only. Instead of vector, hashmap etc. this needs to be implemented
- * using proper data structures with minimized complexity for search/remove/push elements
- * within queue and search data structure during this tranveral.
+ * As you can see, usage of breadth first search for weighted 
+ * graphs is not possible, due to the fact that it would find the path with
+ * fewest segments (which maybe is not shortest path from start to finish)
  */
 
 #include <iostream>
@@ -38,7 +39,7 @@ void insertToQueue(list<string> &list, vector<string> &v) {
 }
 
 int main(int argc, char** argv) {
-    map<string, vector<string>> graph;
+    /*map<string, vector<string>> graph;
     list<string> queue{};
     vector<string> searched{};
 
@@ -78,5 +79,8 @@ int main(int argc, char** argv) {
             insertToQueue(queue, graph[temp]);
         }
     }
+    */
+
+    cout << "Testing here additionally" << endl;
 }
 
