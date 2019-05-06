@@ -17,21 +17,48 @@
 #include <map>
 #include <string>
 
-#define DEBUG (1==1)
+typedef std::map<std::string, int> ChildNodesMap;
+typedef std::map<std::string, ChildNodesMap > GraphMap;
 
-using namespace std;
+void populateGraph(GraphMap &graph) {
+    graph["start"]["a"] = 5;
+    graph["start"]["b"] = 2;
 
-template <class T>
-void displayList(list<T> &v) {
-    cout << "{";
-    auto it = v.begin();
-    for(; it != v.end(); it++) {
-        cout << *it << ",";
-    }
-    cout << "}" << endl;
+    graph["a"]["c"] = 4;
+    graph["a"]["d"] = 2;
+
+    graph["b"]["a"] = 8;
+    graph["b"]["d"] = 7;
+
+    graph["c"]["d"] = 6;
+    graph["c"]["finish"] = 3;
+
+    graph["d"]["finish"] = 1;
 }
 
-void insertToQueue(list<string> &list, vector<string> &v) {
+void dipslayGraph(GraphMap &graph) {
+    GraphMap::iterator it = graph.begin();
+    for(; it != graph.end(); it++) {
+        ChildNodesMap::iterator iter = it->second.begin();
+        std::cout << "['" << it->first << "'] => {";
+        for(; iter != it->second.end(); iter++) {
+            std::cout << iter->first << "=>" << iter->second << ", ";
+        }
+        std::cout << "}" << std::endl;
+    }
+}
+
+template <class T>
+void displayList(std::list<T> &v) {
+    std::cout << "{";
+    auto it = v.begin();
+    for(; it != v.end(); it++) {
+        std::cout << *it << ",";
+    }
+    std::cout << "}" << std::endl;
+}
+
+void insertToQueue(std::list<std::string> &list, std::vector<std::string> &v) {
     auto it = v.begin();
     for(; it != v.end(); it++) {
         list.push_back(*it);
@@ -39,7 +66,13 @@ void insertToQueue(list<string> &list, vector<string> &v) {
 }
 
 int main(int argc, char** argv) {
-    /*map<string, vector<string>> graph;
+    GraphMap graph;
+    populateGraph(graph);
+    dipslayGraph(graph);
+
+
+
+    /*
     list<string> queue{};
     vector<string> searched{};
 
@@ -81,6 +114,6 @@ int main(int argc, char** argv) {
     }
     */
 
-    cout << "Testing here additionally" << endl;
+    std::cout << "Testing here additionally" << std::endl;
 }
 
