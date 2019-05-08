@@ -57,6 +57,19 @@ void populateGraph() {
     graph["finish"];
 }
 
+void populateGraph2() {
+    graph["start"]["a"] = 10;
+
+    graph["a"]["c"] = 20;
+
+    graph["b"]["a"] = 1;
+
+    graph["c"]["b"] = 1;
+    graph["c"]["finish"] = 30;
+
+    graph["finish"];
+}
+
 void populateCostsAndParents(std::string startNode) {
     GraphMap::iterator it = graph.begin();
     ChildNodesMap neighbours = graph[startNode];
@@ -139,7 +152,8 @@ std::string findLowestCostNode() {
 
 
 int main(int argc, char** argv) {
-    populateGraph();
+    //populateGraph();
+    populateGraph2();
     dipslayGraph();
 
     populateCostsAndParents("start");
