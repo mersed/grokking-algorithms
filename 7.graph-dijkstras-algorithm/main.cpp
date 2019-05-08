@@ -16,7 +16,6 @@
  * to be optimal - from perspective of space and time complexity - everything
  * bellow can be implemented with arrays only.
  */
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -24,10 +23,23 @@
 #include <map>
 #include <string>
 
+typedef std::map<std::string, std::string> ParentsMap;
 typedef std::map<std::string, int> ChildNodesMap;
 typedef std::map<std::string, ChildNodesMap > GraphMap;
 
-void populateGraph(GraphMap &graph) {
+// Define hashmap for graph
+GraphMap graph;
+
+// Define hashmap for costs
+ChildNodesMap costs;
+
+// Define hashmap for parents
+ParentsMap parents;
+
+// Define vector for processed
+std::vector<std::string> processed;
+
+void populateGraph() {
     graph["start"]["a"] = 5;
     graph["start"]["b"] = 2;
 
@@ -41,9 +53,30 @@ void populateGraph(GraphMap &graph) {
     graph["c"]["finish"] = 3;
 
     graph["d"]["finish"] = 1;
+
+    graph["finish"];
 }
 
-void dipslayGraph(GraphMap &graph) {
+void populateCostsAndParents(std::string startNode) {
+    GraphMap::iterator it = graph.begin();
+    ChildNodesMap neighbours = graph[startNode];
+    for(; it != graph.end(); it++) {
+        if(it->first == startNode) {
+            continue;
+        }
+
+        if(neighbours.count(it->first)) {
+            costs[it->first] = neighbours[it->first];
+            parents[it->first] = startNode;
+        }
+        else {
+            costs[it->first] = INT_MAX;
+            parents[it->first] = "";
+        }
+    }
+}
+
+void dipslayGraph() {
     std::cout << "Graph defined: " << std::endl;
     std::cout << "------------------" << std::endl;
     GraphMap::iterator it = graph.begin();
@@ -59,57 +92,65 @@ void dipslayGraph(GraphMap &graph) {
     std::cout << std::endl << std::endl;
 }
 
-std::string findLowestCostNode(ChildNodesMap &costs, std::vector<std::string> &processed) {
+void displayCosts(int iteration) {
+    std::cout << "Costs: " << std::endl;
+
+    ChildNodesMap::iterator it = costs.begin();
+    for(; it != costs.end(); it++) {
+        std::cout << it->first << " = " << it->second << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+void displayParents(int iteration) {
+    std::cout << "Parents: " << std::endl;
+    ParentsMap::iterator it = parents.begin();
+    for(; it != parents.end(); it++) {
+        std::cout << it->first << " = " << it->second << std::endl;
+    }
+}
+
+void displayIterationLogs(int iteration) {
+    std::cout << iteration << ". iteration: " << std::endl;
+    std::cout << "-----------------------------------------------" << std::endl;
+    displayCosts(iteration);
+    displayParents(iteration);
+    std::cout << "-----------------------------------------------" << std::endl << std::endl;
+}
+
+std::string findLowestCostNode() {
     ChildNodesMap::iterator it = costs.begin();
     std::string lowestCostNode = "";
     int lowestCost = INT_MAX;
 
-    std::cout << "Lowest cost defined: " << lowestCost << std::endl;
     for(; it != costs.end(); it++) {
-        std::cout << "Comparation node and price: " << it->first << " ----- " << it->second << std::endl;
         if (
             it->second < lowestCost &&
             std::find(processed.begin(), processed.end(), it->first) == processed.end()
         ) {
-            std::cout << "findLowestCostNode condition fullfiled " << it->first << std::endl;
             lowestCost = it->second;
             lowestCostNode = it->first;
         }
     }
 
+    std::cout << "Found lowest cost node: " << lowestCostNode << std::endl << std::endl;
     return lowestCostNode;
 }
 
 
 int main(int argc, char** argv) {
-    // Define hashmap for graph
-    GraphMap graph;
-    populateGraph(graph);
-    dipslayGraph(graph);
+    populateGraph();
+    dipslayGraph();
 
-    // Define hashmap for costs
-    ChildNodesMap costs;
-    costs["a"] = graph["start"]["a"];
-    costs["b"] = graph["start"]["b"];
-    costs["c"] = INT_MAX;
-    costs["d"] = INT_MAX;
-    costs["finish"] = INT_MAX;
+    populateCostsAndParents("start");
 
-    // Define hashmap for parents
-    std::map<std::string, std::string> parents;
-    parents["a"] = "start";
-    parents["b"] = "start";
-    parents["c"] = "";
-    parents["d"] = "";
-    parents["finish"] = "";
+    int counter = 1;
+    displayIterationLogs(counter);
 
-    // Define vector for processed
-    std::vector<std::string> processed;
 
     // Apply djikstra
-    std::string node = findLowestCostNode(costs, processed);
+    std::string node = findLowestCostNode();
     while(!node.empty()) {
-        std::cout << "Inside " << node << std::endl;
         ChildNodesMap neighbours = graph[node];
         ChildNodesMap::iterator it = neighbours.begin();
         int cost = costs[node];
@@ -118,11 +159,22 @@ int main(int argc, char** argv) {
             int newCost = cost + it->second;
             if(costs[it->first] > newCost) {
                 costs[it->first] = newCost;
-                parents[it->first] = it->first;
+                parents[it->first] = node;
             }
         }
         processed.push_back(node);
-        node = findLowestCostNode(costs, processed);
+
+        counter++;
+        displayIterationLogs(counter);
+        node = findLowestCostNode();
     }
+
+    std::cout << "Shortest path: finish <- ";
+    node = parents["finish"];
+    while(node != "start") {
+        std::cout << node << " <- ";
+        node = parents[node];
+    }
+    std::cout << "start (" << costs["finish"] << ")" << std::endl;
 }
 
